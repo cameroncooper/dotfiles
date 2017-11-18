@@ -1,0 +1,2 @@
+# install gocode
+# create symlinks
