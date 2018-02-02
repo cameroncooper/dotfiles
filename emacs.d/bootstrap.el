@@ -3,15 +3,22 @@
 
 ;; Setup theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load-theme 'monokai t)
+(load-theme 'seti-minimal t)
 (add-to-list 'default-frame-alist '(background-color . "#0d0d0d"))
 
 ;; Hide menu bar
 (menu-bar-mode -1)
 
+;; Line numbers
+(add-hook 'prog-mode-hook 'linum-mode)
+(setq linum-format "%4d \u2502 ")
+
 ;; Better frame titles
 (setq frame-title-format
       (concat  "%b - emacs@" (system-name)))
+
+;; Autocomplete paired brackets
+(electric-pair-mode 1)
 
 ;; Configure mouse
 (xterm-mouse-mode t)
@@ -27,6 +34,10 @@
 
 ;; Company mode
 (add-hook 'after-init-hook 'global-company-mode)
+
+;; Neotree
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
 
 ;; Powerline
 (add-to-list 'load-path "~/.emacs.d/powerline")
@@ -45,6 +56,7 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
-;; Go setup
+;; Langs setup
 (load "~/.emacs.d/langs/go/setup.el")
+(load "~/.emacs.d/langs/js/setup.el")
 

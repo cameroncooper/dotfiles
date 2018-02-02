@@ -1,13 +1,21 @@
 ;; Load go-mode
-(add-to-list 'load-path "~/.emacs.d/langs/go/go-mode.el-1.5.0")
-(require 'go-mode-autoloads)
-;; Company mode backend
-(add-to-list 'load-path "~/.emacs.d/langs/go/company-go")
+
+(add-hook 'after-init-hook 'global-company-mode)
 (require 'company-go)
+(setq gofmt-command "goimports")
+
+(add-hook 'go-mode-hook 'company-mode)
 (add-hook 'go-mode-hook (lambda ()
-			  (add-hook 'before-save-hook #'gofmt-before-save)
-                          (set (make-local-variable 'company-backends) '(company-go))
-                          (company-mode)))
+                            (set (make-local-variable 'company-backends) '(company-go))
+                            (company-mode)))
+
+
+
+
+(add-hook 'go-mode-hook (lambda ()
+			  (add-hook 'before-save-hook #'gofmt-before-save)))
+
+
 ;; Import GOPATH
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize)

@@ -22,6 +22,11 @@
 (ensure-package-installed
  'company
  'multiple-cursors
+ 'exec-path-from-shell
+ 'js2-mode
+ 'go-mode
+ 'company-go
+ 'neotree
 ;; 'helm
 ;; 'projectile
 ;; 'helm-projectile
