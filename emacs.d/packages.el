@@ -26,6 +26,7 @@
  'js2-mode
  'go-mode
  'company-go
+ 'company-tern
  'neotree
 ;; 'helm
 ;; 'projectile

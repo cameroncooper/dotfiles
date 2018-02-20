@@ -46,6 +46,12 @@
 
 ;; Setup IDO mode
 (require 'ido)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(setq ido-create-new-buffer 'always)
+(defadvice ido-switch-buffer (around no-confirmation activate)
+  (let ((confirm-nonexistent-file-or-buffer nil))
+    ad-do-it))
 (ido-mode t)
 
 ;; Multiple cursors
