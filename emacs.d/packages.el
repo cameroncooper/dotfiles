@@ -28,6 +28,7 @@
  'company-go
  'company-tern
  'neotree
+ 'yaml-mode
 ;; 'helm
 ;; 'projectile
 ;; 'helm-projectile
