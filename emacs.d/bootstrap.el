@@ -1,3 +1,7 @@
+;; No splash screen
+(setq inhibit-startup-screen t)
+(setq initial-scratch-message " ")
+
 ;; Make sure packages are installed
 (load "~/.emacs.d/packages")
 
@@ -32,6 +36,25 @@
   kept-old-versions 2
   version-control t)
 
+;; Better undo with undo-tree
+(require 'undo-tree)
+(global-undo-tree-mode 1)
+(global-set-key "\C-^" 'redo)
+
+;; Move line/region with M-up/down
+(move-text-default-bindings)
+
+;; Comment/uncomment with C-/
+(defun comment-or-uncomment-line-or-region ()
+  "Comments or uncomments the current line or region."
+  (interactive)
+  (if (region-active-p)
+      (comment-or-uncomment-region (region-beginning) (region-end))
+    (comment-or-uncomment-region (line-beginning-position) (line-end-position))
+    )
+  )
+(global-set-key "\C-c\C-c" 'comment-or-uncomment-line-or-region)
+
 ;; Company mode
 (add-hook 'after-init-hook 'global-company-mode)
 
@@ -65,4 +88,3 @@
 ;; Langs setup
 (load "~/.emacs.d/langs/go/setup.el")
 (load "~/.emacs.d/langs/js/setup.el")
-

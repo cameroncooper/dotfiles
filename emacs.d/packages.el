@@ -1,3 +1,4 @@
+
 ;; Enable MELPA
 (require 'package) ;; You might already have this line
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -20,6 +21,10 @@
 )
 
 (ensure-package-installed
+ 'org
+ 'helm
+ 'undo-tree
+ 'move-text
  'company
  'multiple-cursors
  'exec-path-from-shell
