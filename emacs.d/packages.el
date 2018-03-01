@@ -23,6 +23,7 @@
 (ensure-package-installed
  'org
  'helm
+ 'projectile
  'undo-tree
  'company
  'multiple-cursors

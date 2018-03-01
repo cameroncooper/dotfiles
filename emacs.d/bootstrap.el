@@ -46,7 +46,7 @@
 (require 'move-lines)
 (move-lines-binding)
 
-;; Comment/uncomment with C-/
+;; Comment/uncomment with C-c c
 (defun comment-or-uncomment-line-or-region ()
   "Comments or uncomments the current line or region."
   (interactive)
@@ -69,21 +69,16 @@
 (require 'powerline)
 (powerline-default-theme)
 
-;; Setup IDO mode
-(require 'ido)
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(setq ido-create-new-buffer 'always)
-(defadvice ido-switch-buffer (around no-confirmation activate)
-  (let ((confirm-nonexistent-file-or-buffer nil))
-    ad-do-it))
-(ido-mode t)
+;; Enable helm
+(global-set-key (kbd "M-x") #'helm-M-x)
+(global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
+(global-set-key (kbd "C-x C-f") #'helm-find-files)
+(helm-mode 1)
 
 ;; Multiple cursors
 (require 'multiple-cursors)
-(global-set-key (kbd "C-M-l") 'mc/edit-lines)
+(global-set-key (kbd "C-S-l") 'mc/edit-ends-of-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-M-s") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
