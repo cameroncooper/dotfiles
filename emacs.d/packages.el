@@ -24,7 +24,6 @@
  'org
  'helm
  'undo-tree
- 'move-text
  'company
  'multiple-cursors
  'exec-path-from-shell

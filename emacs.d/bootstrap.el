@@ -42,7 +42,9 @@
 (global-set-key "\C-^" 'redo)
 
 ;; Move line/region with M-up/down
-(move-text-default-bindings)
+(load "~/.emacs.d/move-lines")
+(require 'move-lines)
+(move-lines-binding)
 
 ;; Comment/uncomment with C-/
 (defun comment-or-uncomment-line-or-region ()
